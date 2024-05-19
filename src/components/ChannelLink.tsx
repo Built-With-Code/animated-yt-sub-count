@@ -1,9 +1,28 @@
+"use client";
+
 import Image from "next/image";
-import React, { Suspense } from "react";
+import React, { useEffect, useState } from "react";
 
 import ArrowIcon from "@/../public/arrow.svg";
+import { animate } from "framer-motion";
 
 const ChannelLink = ({ subscriberCount }: { subscriberCount: number }) => {
+  const [displaySubs, setDisplaySubs] = useState(0);
+
+  useEffect(() => {
+    const controls = animate(0, subscriberCount, {
+      duration: 1.5,
+      ease: "easeOut",
+      onUpdate: (value) => {
+        setDisplaySubs(Math.round(value));
+      },
+    });
+
+    return () => {
+      controls.stop();
+    };
+  }, []);
+
   return (
     <div className="group flex w-full">
       <a
@@ -30,9 +49,7 @@ const ChannelLink = ({ subscriberCount }: { subscriberCount: number }) => {
           </div>
           <div className="flex flex-col">
             <p className="font-medium text-neutral-100">{"Built With Code"}</p>
-            <Suspense fallback={<p className="h-6" />}>
-              <p className="text-neutral-400">{subscriberCount} subscribers</p>
-            </Suspense>
+            <p className="text-neutral-400">{displaySubs} subscribers</p>
           </div>
         </div>
         <div className="transform text-neutral-300 transition-transform duration-300 group-hover:-rotate-12">
