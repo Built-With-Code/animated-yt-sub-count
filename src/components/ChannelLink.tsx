@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 
 import ArrowIcon from "@/../public/arrow.svg";
 
-const ChannelLink = () => {
+const ChannelLink = ({ subscriberCount }: { subscriberCount: number }) => {
   return (
     <div className="group flex w-full">
       <a
@@ -31,7 +31,7 @@ const ChannelLink = () => {
           <div className="flex flex-col">
             <p className="font-medium text-neutral-100">{"Built With Code"}</p>
             <Suspense fallback={<p className="h-6" />}>
-              <p className="text-neutral-400">{10} subscribers</p>
+              <p className="text-neutral-400">{subscriberCount} subscribers</p>
             </Suspense>
           </div>
         </div>
