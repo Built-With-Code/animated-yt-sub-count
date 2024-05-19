@@ -6,7 +6,13 @@ import React, { useEffect, useState } from "react";
 import ArrowIcon from "@/../public/arrow.svg";
 import { animate } from "framer-motion";
 
-const ChannelLink = ({ subscriberCount }: { subscriberCount: number }) => {
+const ChannelLink = ({
+  channelName,
+  subscriberCount,
+}: {
+  channelName: string;
+  subscriberCount: number;
+}) => {
   const [displaySubs, setDisplaySubs] = useState(0);
 
   useEffect(() => {
@@ -48,7 +54,7 @@ const ChannelLink = ({ subscriberCount }: { subscriberCount: number }) => {
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="font-medium text-neutral-100">{"Built With Code"}</p>
+            <p className="font-medium text-neutral-100">{channelName}</p>
             <p className="text-neutral-400">{displaySubs} subscribers</p>
           </div>
         </div>
