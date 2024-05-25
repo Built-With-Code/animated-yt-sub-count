@@ -9,9 +9,11 @@ import { useSpring } from "framer-motion";
 const ChannelLink = ({
   channelName,
   subscriberCount,
+  subscriberUnits = "",
 }: {
   channelName: string;
   subscriberCount: number;
+  subscriberUnits?: string;
 }) => {
   const [displaySubs, setDisplaySubs] = useState(0);
 
@@ -54,7 +56,10 @@ const ChannelLink = ({
           </div>
           <div className="flex flex-col">
             <p className="font-medium text-neutral-100">{channelName}</p>
-            <p className="text-neutral-400">{displaySubs} subscribers</p>
+            <p className="text-neutral-400">
+              {displaySubs}
+              {subscriberUnits} subscribers
+            </p>
           </div>
         </div>
         <div className="transform text-neutral-300 transition-transform duration-300 group-hover:-rotate-12">
