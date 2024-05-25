@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { useSpring } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
 
 import ArrowIcon from "@/../public/arrow.svg";
 import YTIcon from "@/../public/yt.svg";
@@ -23,6 +23,7 @@ const ChannelLink = ({
   // Animating sub count from 0 to subscriberCount prop
   const springSubCount = useSpring(0, {
     bounce: 0,
+    duration: 1000,
   });
 
   springSubCount.on("change", (value) => {
@@ -35,7 +36,13 @@ const ChannelLink = ({
 
   return (
     <div className="group rounded bg-neutral-800">
-      <a href="#" className="flex items-center justify-between p-4">
+      <motion.a
+        href="#"
+        className="flex items-center justify-between p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="flex items-center gap-3">
           <div className="relative">
             <Image
@@ -58,7 +65,7 @@ const ChannelLink = ({
           </div>
         </div>
         <ArrowIcon className="fill-neutral-300 transition-all duration-300 group-hover:-rotate-[15deg] group-hover:fill-neutral-400" />
-      </a>
+      </motion.a>
     </div>
   );
 };
