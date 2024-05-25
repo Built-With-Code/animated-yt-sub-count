@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { useSpring } from "framer-motion";
 
 import ArrowIcon from "@/../public/arrow.svg";
 import YTIcon from "@/../public/yt.svg";
-import { useSpring } from "framer-motion";
 
 const ChannelLink = ({
   channelName,
@@ -34,37 +34,30 @@ const ChannelLink = ({
   }, []);
 
   return (
-    <div className="group flex w-full">
-      <a
-        href={"#"}
-        target="_blank"
-        className="flex w-full items-center justify-between rounded border border-neutral-700 bg-neutral-800 px-3 py-4"
-      >
-        <div className="flex items-center space-x-3">
-          <div className="relative h-16">
+    <div className="group rounded bg-neutral-800">
+      <a href="#" className="flex items-center justify-between p-4">
+        <div className="flex items-center gap-3">
+          <div className="relative">
             <Image
               alt={channelName}
               src={profileImg}
               height={64}
               width={64}
-              sizes="33vw"
-              className="h-16 w-16 rounded-full border border-neutral-700"
+              className="h-16 w-16 rounded-full border border-neutral-700 object-cover"
             />
-            <div className="relative -right-10 -top-6 inline-flex h-6 w-6 items-center rounded-full border border-neutral-700 bg-white p-1">
+            <div className="absolute bottom-0 right-0 flex h-6 w-6 items-center justify-center rounded-full border border-neutral-700 bg-white p-1">
               <YTIcon />
             </div>
           </div>
-          <div className="flex flex-col">
-            <p className="font-medium text-neutral-100">{channelName}</p>
-            <p className="text-neutral-400">
+          <div>
+            <p className="font-medium text-neutral-200">{channelName}</p>
+            <p className="text-sm text-neutral-400">
               {displaySubs}
-              {subscriberUnits} subscribers
+              {subscriberUnits} Subscribers
             </p>
           </div>
         </div>
-        <div className="transform text-neutral-300 transition-transform duration-300 group-hover:-rotate-12">
-          <ArrowIcon />
-        </div>
+        <ArrowIcon className="fill-neutral-300 transition-all duration-300 group-hover:-rotate-[15deg] group-hover:fill-neutral-400" />
       </a>
     </div>
   );
