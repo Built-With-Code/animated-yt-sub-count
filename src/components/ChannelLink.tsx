@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import ArrowIcon from "@/../public/arrow.svg";
-import { animate } from "framer-motion";
+import { useSpring } from "framer-motion";
 
 const ChannelLink = ({
   channelName,
@@ -15,18 +15,17 @@ const ChannelLink = ({
 }) => {
   const [displaySubs, setDisplaySubs] = useState(0);
 
-  useEffect(() => {
-    const controls = animate(0, subscriberCount, {
-      duration: 1.5,
-      ease: "easeOut",
-      onUpdate: (value) => {
-        setDisplaySubs(Math.round(value));
-      },
-    });
+  // Animating sub count from 0 to subscriberCount prop
+  const springSubCount = useSpring(0, {
+    bounce: 0,
+  });
 
-    return () => {
-      controls.stop();
-    };
+  springSubCount.on("change", (value) => {
+    setDisplaySubs(Math.round(value));
+  });
+
+  useEffect(() => {
+    springSubCount.set(subscriberCount);
   }, []);
 
   return (
@@ -34,7 +33,7 @@ const ChannelLink = ({
       <a
         href={"#"}
         target="_blank"
-        className="flex w-full items-center justify-between rounded border  border-neutral-700 bg-neutral-800 px-3 py-4"
+        className="flex w-full items-center justify-between rounded border border-neutral-700 bg-neutral-800 px-3 py-4"
       >
         <div className="flex items-center space-x-3">
           <div className="relative h-16">
