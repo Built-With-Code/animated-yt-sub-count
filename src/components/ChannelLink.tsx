@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import ArrowIcon from "@/../public/arrow.svg";
+import YTIcon from "@/../public/yt.svg";
 import { useSpring } from "framer-motion";
 
 const ChannelLink = ({
@@ -50,9 +51,7 @@ const ChannelLink = ({
               className="h-16 w-16 rounded-full border border-neutral-700"
             />
             <div className="relative -right-10 -top-6 inline-flex h-6 w-6 items-center rounded-full border border-neutral-700 bg-white p-1">
-              <svg width="15" height="11" role="img" aria-label="YouTube logo">
-                <use href="/sprite.svg#youtube" />
-              </svg>
+              <YTIcon />
             </div>
           </div>
           <div className="flex flex-col">
