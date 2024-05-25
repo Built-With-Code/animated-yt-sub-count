@@ -6,26 +6,31 @@ export default function Home() {
       <div className="my-8 flex w-full flex-col space-x-0 space-y-4">
         <ChannelLink
           channelName="Built With Code"
+          profileImg="/bwc.png"
           subscriberCount={2.5}
           subscriberUnits="k"
         />
         <ChannelLink
           channelName="Olivier Larose"
+          profileImg="/olivier.jpg"
           subscriberCount={17}
           subscriberUnits="k"
         />
         <ChannelLink
           channelName="Lee Robinson"
+          profileImg="/leerob.jpg"
           subscriberCount={55}
           subscriberUnits="k"
         />
         <ChannelLink
           channelName="Theo - t3.gg"
+          profileImg="/theo.jpg"
           subscriberCount={285}
           subscriberUnits="k"
         />
         <ChannelLink
           channelName="Marques Brownlee"
+          profileImg="/mkbhd.jpg"
           subscriberCount={19}
           subscriberUnits="M"
         />

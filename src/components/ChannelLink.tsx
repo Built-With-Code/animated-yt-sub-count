@@ -8,10 +8,12 @@ import { useSpring } from "framer-motion";
 
 const ChannelLink = ({
   channelName,
+  profileImg,
   subscriberCount,
   subscriberUnits = "",
 }: {
   channelName: string;
+  profileImg: string;
   subscriberCount: number;
   subscriberUnits?: string;
 }) => {
@@ -40,13 +42,12 @@ const ChannelLink = ({
         <div className="flex items-center space-x-3">
           <div className="relative h-16">
             <Image
-              alt={"YouTube Profile picture"}
-              src={"/profile.png"}
+              alt={channelName}
+              src={profileImg}
               height={64}
               width={64}
               sizes="33vw"
               className="h-16 w-16 rounded-full border border-neutral-700"
-              priority
             />
             <div className="relative -right-10 -top-6 inline-flex h-6 w-6 items-center rounded-full border border-neutral-700 bg-white p-1">
               <svg width="15" height="11" role="img" aria-label="YouTube logo">
